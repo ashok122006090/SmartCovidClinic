@@ -25,16 +25,16 @@ import com.smartcovidclinic.service.AppointmentService;
 public class AppointmentController {
 	@Autowired
 	private AppointmentService appointmentService;
-	
-	@PostMapping("/appointment")
-	public Appointment addAppointment(@RequestBody Appointment appointment) {
-		return this.appointmentService.addAppointment(appointment);
-	}
 	@GetMapping("/appointment")
     public ResponseEntity<Appointment> viewappointments() {
         List<Appointment> AppointmentImpl = appointmentService.viewAppointments();
         return new ResponseEntity(AppointmentImpl, HttpStatus.OK);
     }
+	@PostMapping("/appointment")
+	public Appointment addAppointment(@RequestBody Appointment appointment) {
+		return this.appointmentService.addAppointment(appointment);
+	}
+	
 	@PutMapping("/appointment")
 	public Appointment updateAppointment(@RequestBody Appointment appointment) {
 		return this.appointmentService.updateAppointment(appointment);

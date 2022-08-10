@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smartcovidclinic.entities.Doctor;
-import com.smartcovidclinic.entities.Patient;
 import com.smartcovidclinic.service.DoctorService;
 
 @RestController
@@ -29,6 +28,7 @@ public class DoctorController {
 	public Doctor addDoctors(@RequestBody Doctor doctor) {
 		return this.doctorService.addDoctors(doctor);
 	}
+	
 	@PutMapping("/doctors")
 	public Doctor updateDoctors(@RequestBody Doctor doctor) {
 		return this.doctorService.updateDoctors(doctor);
@@ -38,5 +38,6 @@ public class DoctorController {
 		this.doctorService.deleteDoctorById(doctor_Id);
 		
 	}
+	
 
 }

@@ -1,4 +1,4 @@
-package com.smartcovidclinic;
+package com.smartcovidclinic.test;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
