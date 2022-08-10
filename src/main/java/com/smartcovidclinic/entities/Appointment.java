@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "appointment")
@@ -21,7 +22,9 @@ public class Appointment {
   @JoinColumn(name="patientName")
 	
 	 Patient patient; 
+	@NotBlank(message = "Name is mandatory")
 	 String doctorName;
+	@NotBlank(message = "Symptoms are  mandatory")
  String symptoms;
  LocalDate appointmentDate;
 

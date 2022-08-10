@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
 
 @Entity
 @Table(name = "patient")
@@ -14,8 +17,10 @@ public class Patient {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Patient_Id")
 	private int patientId;
+	@NotBlank(message = "Name is mandatory")
 	private String patientName;
 	private int patientAge;
+	@Pattern(regexp="[6-9]{1}[0-9]{9}",message="mobile number must have 10 characters")
 	private long patientContactNo;
 	
 	public Patient(int patientId, String patientName, int patientAge, long patientContactNo) {

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name="Doctor")
 public class Doctor {
@@ -15,6 +16,7 @@ public class Doctor {
    @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int Doctorid;
+   @NotBlank(message = "Name is mandatory")
     String DoctorName;
 	LocalDate Date;
 	public Doctor() {
