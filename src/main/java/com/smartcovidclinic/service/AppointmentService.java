@@ -5,17 +5,20 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.smartcovidclinic.entities.Appointment;
+import com.smartcovidclinic.entities.Patient;
 
 
 
 @Service
 public interface AppointmentService {
 
-	public int addAppointment(Appointment appointment);
+	public Appointment addAppointment(Appointment appointment);
 
 	public List<Appointment> viewAppointments();
 	
-	public void deleteappointment(int appointmentId);
+	public void deleteAppointmentById(int appointmentId);
+	 public Appointment updateAppointment(Appointment appointment);
+	    
 
 	 
 

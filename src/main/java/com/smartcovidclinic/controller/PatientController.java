@@ -3,7 +3,9 @@ package com.smartcovidclinic.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,6 +34,11 @@ public class PatientController {
 	@PutMapping("/patient")
 	public Patient updatePatient(@RequestBody Patient patient) {
 		return this.patientService.updatePatient(patient);
+	}
+	@DeleteMapping("/patient/{patient_Id}")
+	public void deletePatientById(@PathVariable int patient_Id) {
+		this.patientService.deletePatientById(patient_Id);
+		
 	}
 
 }

@@ -38,7 +38,10 @@ public class PatientServiceImpl implements PatientService{
 	@Override
 	public void deletePatientById(int patientId) {
 		// TODO Auto-generated method stub
-		
+	Patient obj = patientDAO.getOne(patientId);
+	 patientDAO.delete (obj);
+	 
+	
 	}
 
 	

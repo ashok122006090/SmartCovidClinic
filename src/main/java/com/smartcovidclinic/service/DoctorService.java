@@ -11,6 +11,7 @@ public interface DoctorService {
 	public List<Doctor> getDoctors();
 	public Doctor addDoctors(Doctor doctor);
     public Doctor updateDoctors(Doctor doctor);
+	public void deleteDoctorById(int doctor_Id);
  
 
 }

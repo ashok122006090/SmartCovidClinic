@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.smartcovidclinic.dao.DoctorDAO;
 import com.smartcovidclinic.entities.Doctor;
+import com.smartcovidclinic.entities.Patient;
 
 @Service
 public class DoctorServiceImpl implements DoctorService{
@@ -35,5 +36,14 @@ public class DoctorServiceImpl implements DoctorService{
 		doctorDAO.save(doctor);
 		return doctor;
 	}
+
+	@Override
+	public void deleteDoctorById(int doctor_Id) {
+		// TODO Auto-generated method stub
+		Doctor obj = doctorDAO.getOne(doctor_Id);
+		doctorDAO.delete(obj);
+	}
+
+	
 
 }

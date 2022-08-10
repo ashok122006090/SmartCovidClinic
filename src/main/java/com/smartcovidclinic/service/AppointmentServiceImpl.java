@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.smartcovidclinic.dao.AppointmentDAO;
 import com.smartcovidclinic.entities.Appointment;
+import com.smartcovidclinic.entities.Doctor;
 
 
 @Service
@@ -17,9 +18,10 @@ public class AppointmentServiceImpl implements AppointmentService{
 	private AppointmentDAO appointmentDAO;
 
 	@Override
-	public int addAppointment(Appointment appointment) {
+	public Appointment addAppointment(Appointment appointment) {
 		// TODO Auto-generated method stub
-		return 0;
+		appointmentDAO.save(appointment);
+		return appointment;
 	}
 
 	@Override
@@ -29,9 +31,18 @@ public class AppointmentServiceImpl implements AppointmentService{
 	}
 
 	@Override
-	public void deleteappointment(int appointmentId) {
+	public void deleteAppointmentById(int appointmentId) {
 		// TODO Auto-generated method stub
+		Appointment obj = appointmentDAO.getOne(appointmentId);
+		appointmentDAO.delete(obj);
 		
+	}
+
+	@Override
+	public Appointment updateAppointment(Appointment appointment) {
+		// TODO Auto-generated method stub
+		appointmentDAO.save(appointment);
+		return appointment;
 	}
 
 

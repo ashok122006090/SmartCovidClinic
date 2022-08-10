@@ -18,7 +18,7 @@ public class Appointment {
 	private int appointmentId;
 	
 	@ManyToOne(optional = false)
-  @JoinColumn(name="Patient_Id")
+  @JoinColumn(name="patientName")
 	
 	 Patient patient; 
 	 String doctorName;

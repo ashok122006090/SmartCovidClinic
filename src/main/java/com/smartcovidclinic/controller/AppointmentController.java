@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smartcovidclinic.entities.Appointment;
+import com.smartcovidclinic.entities.Doctor;
 import com.smartcovidclinic.service.AppointmentService;
 
 
@@ -24,16 +26,22 @@ public class AppointmentController {
 	@Autowired
 	private AppointmentService appointmentService;
 	
-
-	@PostMapping("/addAppointment")
-    public ResponseEntity<Appointment> addAppointment(@RequestBody Appointment appointmentDAO) {
-        int appointmentimpl = appointmentService.addAppointment(appointmentDAO);
-        return new ResponseEntity(appointmentimpl, HttpStatus.CREATED);
-    }
+	@PostMapping("/appointment")
+	public Appointment addAppointment(@RequestBody Appointment appointment) {
+		return this.appointmentService.addAppointment(appointment);
+	}
 	@GetMapping("/appointment")
     public ResponseEntity<Appointment> viewappointments() {
         List<Appointment> AppointmentImpl = appointmentService.viewAppointments();
         return new ResponseEntity(AppointmentImpl, HttpStatus.OK);
     }
-
+	@PutMapping("/appointment")
+	public Appointment updateAppointment(@RequestBody Appointment appointment) {
+		return this.appointmentService.updateAppointment(appointment);
+	}
+	@DeleteMapping("/appointment/{appointment_Id}")
+	public void deleteAppointmentById(@PathVariable int appointment_Id) {
+		this.appointmentService.deleteAppointmentById(appointment_Id);
+		
+	}
 }
