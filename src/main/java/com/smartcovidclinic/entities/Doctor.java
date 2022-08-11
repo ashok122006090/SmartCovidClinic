@@ -18,7 +18,7 @@ public class Doctor {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int Doctorid;
    @NotBlank(message = "Name is mandatory")
-   @Column(name = "DoctorName")
+  
     String DoctorName;
    @NotBlank(message = "Name is mandatory")
    String Specialization;
