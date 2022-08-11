@@ -19,114 +19,66 @@ public class Appointment {
 	private int appointmentId;
 	
 	@ManyToOne(optional = false)
-  @JoinColumn(name="patientName")
+  @JoinColumn(name="Patient_Id")
 	
 	 Patient patient; 
-	@NotBlank(message = "Name is mandatory")
-	 String doctorName;
+	@ManyToOne(optional = false)
+	  @JoinColumn(name="Doctorid")
+		
+		 Doctor doctor;
+	
+
 	@NotBlank(message = "Symptoms are  mandatory")
  String symptoms;
  LocalDate appointmentDate;
+ Appointment(){
+	 
+ }
+@Override
+public String toString() {
+	return "Appointment [appointmentId=" + appointmentId + ", patient=" + patient + ", doctor=" + doctor + ", symptoms="
+			+ symptoms + ", appointmentDate=" + appointmentDate + "]";
+}
+public Appointment(int appointmentId, Patient patient, Doctor doctor,
+		@NotBlank(message = "Symptoms are  mandatory") String symptoms, LocalDate appointmentDate) {
+	super();
+	this.appointmentId = appointmentId;
+	this.patient = patient;
+	this.doctor = doctor;
+	this.symptoms = symptoms;
+	this.appointmentDate = appointmentDate;
+}
+public int getAppointmentId() {
+	return appointmentId;
+}
+public void setAppointmentId(int appointmentId) {
+	this.appointmentId = appointmentId;
+}
+public Patient getPatient() {
+	return patient;
+}
+public void setPatient(Patient patient) {
+	this.patient = patient;
+}
+public Doctor getDoctor() {
+	return doctor;
+}
+public void setDoctor(Doctor doctor) {
+	this.doctor = doctor;
+}
+public String getSymptoms() {
+	return symptoms;
+}
+public void setSymptoms(String symptoms) {
+	this.symptoms = symptoms;
+}
+public LocalDate getAppointmentDate() {
+	return appointmentDate;
+}
+public void setAppointmentDate(LocalDate appointmentDate) {
+	this.appointmentDate = appointmentDate;
+}
 
 	
-	public Appointment() {
-		super();
-	}
-
-
-
-
-	public Appointment(int appointmentId, Patient patient, String doctorName, String symptoms,
-			LocalDate appointmentDate) {
-		super();
-		this.appointmentId = appointmentId;
-		this.patient = patient;
-		this.doctorName = doctorName;
-		this.symptoms = symptoms;
-		this.appointmentDate = appointmentDate;
-	}
-
-
-
-
-	public int getAppointmentId() {
-		return appointmentId;
-	}
-
-
-
-
-	public void setAppointmentId(int appointmentId) {
-		this.appointmentId = appointmentId;
-	}
-
-
-
-
-	public Patient getPatient() {
-		return patient;
-	}
-
-
-
-
-	public void setPatient(Patient patient) {
-
-		this.patient = patient;
-	}
-
-
-
-
-	public String getDoctorName() {
-		return doctorName;
-	}
-
-
-
-
-	public void setDoctorName(String doctorName) {
-		this.doctorName = doctorName;
-	}
-
-
-
-
-	public String getSymptoms() {
-		return symptoms;
-	}
-
-
-
-
-	public void setSymptoms(String symptoms) {
-		this.symptoms = symptoms;
-	}
-
-
-
-
-	public LocalDate getAppointmentDate() {
-		return appointmentDate;
-	}
-
-
-
-
-	public void setAppointmentDate(LocalDate appointmentDate) {
-		this.appointmentDate = appointmentDate;
-	}
-
-
-
-
-	@Override
-	public String toString() {
-		return "Appointment [appointmentId=" + appointmentId + ", patient=" + patient + ", doctorName=" + doctorName
-				+ ", symptoms=" + symptoms + ", appointmentDate=" + appointmentDate + "]";
-	}
-	
-	
-
 	
 }
