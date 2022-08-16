@@ -7,6 +7,8 @@ import com.smartcovidclinic.entities.Patient;
 
 
 public interface PatientDAO extends JpaRepository<Patient, Integer >{
+
+	
 	
 
 }

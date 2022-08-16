@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 @Entity
@@ -15,7 +16,8 @@ import javax.validation.constraints.NotBlank;
 public class Doctor {
    
    @Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(strategy = GenerationType.AUTO)
+  // @Column(name="doctor_id")
 	private int Doctorid;
    @NotBlank(message = "Name is mandatory")
   
@@ -26,19 +28,22 @@ public class Doctor {
 	Doctor(){
 		
 	}
-	@Override
-	public String toString() {
-		return "Doctor [Doctorid=" + Doctorid + ", DoctorName=" + DoctorName + ", Specialization=" + Specialization
-				+ ", Date=" + Date + "]";
-	}
-	public Doctor(int doctorid, @NotBlank(message = "Name is mandatory") String doctorName, String specialization,
-			LocalDate date) {
+	
+	public Doctor(int doctorid, @NotBlank(message = "Name is mandatory") String doctorName,
+			@NotBlank(message = "Name is mandatory") String specialization, LocalDate date) {
 		super();
 		Doctorid = doctorid;
 		DoctorName = doctorName;
 		Specialization = specialization;
 		Date = date;
 	}
+
+	@Override
+	public String toString() {
+		return "Doctor [Doctorid=" + Doctorid + ", DoctorName=" + DoctorName + ", Specialization=" + Specialization
+				+ ", Date=" + Date + "]";
+	}
+
 	public int getDoctorid() {
 		return Doctorid;
 	}
@@ -63,6 +68,5 @@ public class Doctor {
 	public void setDate(LocalDate date) {
 		Date = date;
 	}
-	
 	
 }

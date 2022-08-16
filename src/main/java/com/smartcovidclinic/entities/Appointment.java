@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -18,11 +19,11 @@ public class Appointment {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int appointmentId;
 	
-	@ManyToOne(optional = false)
+	@OneToOne(optional = false)
   @JoinColumn(name="Patient_Id")
 	
 	 Patient patient; 
-	@ManyToOne(optional = false)
+	@OneToOne(optional = false)
 	  @JoinColumn(name="Doctorid")
 		
 		 Doctor doctor;
@@ -34,11 +35,7 @@ public class Appointment {
  Appointment(){
 	 
  }
-@Override
-public String toString() {
-	return "Appointment [appointmentId=" + appointmentId + ", patient=" + patient + ", doctor=" + doctor + ", symptoms="
-			+ symptoms + ", appointmentDate=" + appointmentDate + "]";
-}
+ 
 public Appointment(int appointmentId, Patient patient, Doctor doctor,
 		@NotBlank(message = "Symptoms are  mandatory") String symptoms, LocalDate appointmentDate) {
 	super();
@@ -48,6 +45,13 @@ public Appointment(int appointmentId, Patient patient, Doctor doctor,
 	this.symptoms = symptoms;
 	this.appointmentDate = appointmentDate;
 }
+
+@Override
+public String toString() {
+	return "Appointment [appointmentId=" + appointmentId + ", patient=" + patient + ", doctor=" + doctor + ", symptoms="
+			+ symptoms + ", appointmentDate=" + appointmentDate + "]";
+}
+
 public int getAppointmentId() {
 	return appointmentId;
 }
@@ -78,7 +82,6 @@ public LocalDate getAppointmentDate() {
 public void setAppointmentDate(LocalDate appointmentDate) {
 	this.appointmentDate = appointmentDate;
 }
+ 
 
-	
-	
 }

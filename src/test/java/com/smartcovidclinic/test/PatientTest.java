@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
@@ -22,7 +23,7 @@ public class PatientTest {
 	private PatientDAO patientDAO;
 	@Autowired
 	private PatientService patientService;
-	
+	@Test
 	public void getAllPatientTest() {
 		((Stream<Patient>) when(patientDAO.findAll()).thenReturn((List<Patient>) Stream.of( new Patient(21,"madhu",912161,23)))).collect
 (Collectors.toList());

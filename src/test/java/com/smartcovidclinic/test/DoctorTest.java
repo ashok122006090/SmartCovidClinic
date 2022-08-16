@@ -21,7 +21,7 @@ public class DoctorTest {
 	private DoctorService doctorService;
 	
 	public void getAllDoctorsTest() {
-		((Stream<Doctor>) when(doctorDAO.findAll()).thenReturn((List<Doctor>) Stream.of( new Doctor(2,"ashok",LocalDate.parse("2022-03-09"))))).collect
+		((Stream<Doctor>) when(doctorDAO.findAll()).thenReturn((List<Doctor>) Stream.of( new Doctor(2,"ashok","rfrv",LocalDate.parse("2022-03-09"))))).collect
 (Collectors.toList());
 	}
 }
