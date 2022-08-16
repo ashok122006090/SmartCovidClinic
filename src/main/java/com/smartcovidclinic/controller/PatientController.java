@@ -27,33 +27,22 @@ public class PatientController {
 	private PatientService patientService;
 
 	
-	@GetMapping("/patient")
-	public List<Patient> getPatients(){
-		return this.patientService.getPatients();
-	}
-	@PostMapping("/patient")
-	public Patient addPatient(@RequestBody Patient patient) {
-		return this.patientService.addPatient(patient);
-	}
-	@PutMapping("/patient")
-	public Patient updatePatient(@RequestBody Patient patient) {
-		return this.patientService.updatePatient(patient);
-	}
-//	 @GetMapping("/patient")
-//		public ResponseEntity<Doctor> getDoctors(){
-//			List<Patient>PatientImpl = patientService.getPatients();
-//			return new ResponseEntity(PatientImpl, HttpStatus.OK);
-//		}
-//		@PostMapping("/patient")
-//		public ResponseEntity<Patient> addPatient(@RequestBody Patient patientDAO) {
-//			Patient patientImpl = patientService.addPatient(patientDAO);
-//			return new ResponseEntity(patientImpl, HttpStatus.CREATED);
-//		}
-//		@PutMapping("/patient")
-//		public ResponseEntity<Patient> updatePatient(@RequestBody Patient patient) {
-//			Patient patientImpl = patientService.updatePatient(patient);
-//			return new ResponseEntity(patientImpl,HttpStatus.ACCEPTED);}
-	@DeleteMapping("/patient/{patient_Id}")
+	 @GetMapping("/patient")
+		public ResponseEntity<Doctor> getDoctors(){
+			List<Patient>PatientImpl = patientService.getPatients();
+			return new ResponseEntity(PatientImpl, HttpStatus.OK);
+		}
+		@PostMapping("/patient")
+		public ResponseEntity<Patient> addPatient(@RequestBody Patient patientDAO) {
+			Patient patientImpl = patientService.addPatient(patientDAO);
+			return new ResponseEntity(patientImpl, HttpStatus.CREATED);
+		}
+		@PutMapping("/patient")
+		public ResponseEntity<Patient> updatePatient(@RequestBody Patient patient) {
+			Patient patientImpl = patientService.updatePatient(patient);
+			return new ResponseEntity(patientImpl,HttpStatus.ACCEPTED);}
+		
+	@DeleteMapping("/patient/{patient_Id}") 
 	public void deletePatientById(@PathVariable int patient_Id) {
 		this.patientService.deletePatientById(patient_Id);
 		

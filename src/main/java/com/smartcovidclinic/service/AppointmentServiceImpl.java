@@ -1,11 +1,14 @@
 package com.smartcovidclinic.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.smartcovidclinic.dao.AppointmentDAO;
 import com.smartcovidclinic.entities.Appointment;
+import com.smartcovidclinic.exception.AppointmentNotFoundException;
 
 
 @Service
@@ -28,10 +31,21 @@ public class AppointmentServiceImpl implements AppointmentService{
 	}
 
 	@Override
-	public void deleteAppointmentById(int appointmentId) {
-		// TODO Auto-generated method stub
-		Appointment obj = appointmentDAO.getOne(appointmentId);
-		appointmentDAO.delete(obj);
+	public String deleteAppointmentById(int appointmentId) throws AppointmentNotFoundException {
+		
+		Optional<Appointment> appointment =appointmentDAO.findById(appointmentId);
+
+		String message = null;
+		
+		if (appointment.isPresent()) {
+			appointmentDAO.deleteById(appointmentId);
+			
+			message = new String("Appointment Record deleted successfully.");
+		}else {
+			throw new AppointmentNotFoundException("No such Appointment");
+		}
+		
+		return message;
 		
 	}
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.smartcovidclinic.dao.DoctorDAO;
 import com.smartcovidclinic.entities.Doctor;
 import com.smartcovidclinic.entities.Patient;
+import com.smartcovidclinic.exception.DoctorNotFoundException;
 
 
 @Service
@@ -38,14 +39,24 @@ public class DoctorServiceImpl implements DoctorService{
 		doctorDAO.save(doctor);
 		return doctor;
 	}
-
 	@Override
-	public void deleteDoctorById(int doctor_Id) {
-		// TODO Auto-generated method stub
-		Doctor obj = doctorDAO.getOne(doctor_Id);
-		doctorDAO.delete(obj);
-	}
+	public String deleteDoctorById(int doctorId) throws DoctorNotFoundException {
+		
+		Optional<Doctor> doctor =doctorDAO.findById(doctorId);
 
+		String message = null;
+		
+		if (doctor.isPresent()) {
+			doctorDAO.deleteById(doctorId);
+			
+			message = new String("Doctor Record deleted successfully.");
+		}else {
+			throw new DoctorNotFoundException("No such Doctor");
+		}
+		
+		return message;
+		
+	}
 
 	@Override
 	public Doctor getDoctorById(int doctor_id) {
