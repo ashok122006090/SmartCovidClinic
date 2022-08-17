@@ -19,11 +19,11 @@ public class Appointment {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int appointmentId;
 	
-	@OneToOne(optional = false)
+	@ManyToOne(optional = false)
   @JoinColumn(name="Patient_Id")
 	
 	 Patient patient; 
-	@OneToOne(optional = false)
+	@ManyToOne(optional = false)
 	  @JoinColumn(name="Doctorid")
 		
 		 Doctor doctor;
