@@ -16,7 +16,7 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "appointment")
 public class Appointment {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	private int appointmentId;
 	
 	@ManyToOne(optional = false)

@@ -14,7 +14,7 @@ import javax.validation.constraints.Pattern;
 @Table(name = "patient")
 public class Patient {
 	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 //	@Column(name = "Patient_Id")
 	private int patientId;
 	//@NotBlank(message = "Name is mandatory")
